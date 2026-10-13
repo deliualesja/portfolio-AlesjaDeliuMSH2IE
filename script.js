@@ -91,3 +91,16 @@ if (added) {
   sections.push(document.getElementById('videos'));
   observer.observe(document.getElementById('videos'));
 }
+
+// Screenshot viewer: click a screenshot to enlarge it, click again or press Esc to close.
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+document.querySelectorAll('.shot__btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    lightboxImg.src = btn.dataset.full;
+    lightboxImg.alt = btn.querySelector('img').alt;
+    if (typeof lightbox.showModal === 'function') lightbox.showModal();
+    else window.open(btn.dataset.full, '_blank', 'noopener');
+  });
+});
+lightbox.addEventListener('click', () => lightbox.close());

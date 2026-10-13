@@ -336,7 +336,7 @@
           </div>
         </section>
 
-        <!-- RESULTS (numbers from Instagram Insights screenshots) -->
+        <!-- RESULTS (numbers and screenshots from Instagram Insights) -->
         <section id="results" class="section">
           <div class="section__head">
             <h2>Results</h2>
@@ -349,44 +349,82 @@
             <div class="stat"><dt>Followers</dt><dd>3,251</dd><span class="delta">+9.5% in 30 days</span></div>
             <div class="stat"><dt>Net new followers</dt><dd>+281</dd></div>
           </dl>
-          <p class="results-note">Source: Instagram Insights, 30 days to mid-October 2026.</p>
+          <p class="results-note">Source: Instagram Insights, 30 days to mid-October 2026. Click a screenshot to enlarge it.</p>
 
           <div class="reels-bar">
             <div class="track" role="img" aria-label="Reels account for about 71 percent of all views"><div class="fill"></div></div>
             <p><span><strong>Reels:</strong> about 389K views</span><span><strong>71%</strong> of all views</span></p>
           </div>
 
+          <h3 class="sub">Account insights</h3>
+          <div class="shots">
+            <figure class="shot">
+              <button type="button" class="shot__btn" data-full="insights-overview.jpg" aria-label="Enlarge screenshot: views overview">
+                <img src="insights-overview.jpg" width="900" height="1460" loading="lazy"
+                     alt="Instagram Insights overview: 545,643 views and +281 net followers in 30 days, Reels at 389K views" />
+              </button>
+              <figcaption><strong>Reach</strong>Views per day</figcaption>
+            </figure>
+
+            <figure class="shot">
+              <button type="button" class="shot__btn" data-full="insights-audience.jpg" aria-label="Enlarge screenshot: follower growth">
+                <img src="insights-audience.jpg" width="900" height="1035" loading="lazy"
+                     alt="Instagram Insights audience: 3,251 followers, up 9.5%, with the daily follower growth chart" />
+              </button>
+              <figcaption><strong>Audience</strong>Follower growth</figcaption>
+            </figure>
+          </div>
+
+          <h3 class="sub">Top posts</h3>
           <div class="posts">
             <article class="post">
-              <div class="big">112K<small>Views</small></div>
-              <ul>
-                <li>2,503 <span>likes</span></li>
-                <li>29 <span>comments</span></li>
-                <li>38 <span>reposts</span></li>
-                <li>838 <span>shares</span></li>
-              </ul>
-              <div class="total"><strong>3,408</strong><span>Interactions</span></div>
+              <div class="post__info">
+                <div class="big">112K<small>Views</small></div>
+                <ul>
+                  <li>2,503 <span>likes</span></li>
+                  <li>29 <span>comments</span></li>
+                  <li>38 <span>reposts</span></li>
+                  <li>838 <span>shares</span></li>
+                </ul>
+                <div class="total"><strong>3,408</strong> interactions</div>
+              </div>
+              <button type="button" class="shot__btn post__shot" data-full="post-112k.jpg" aria-label="Enlarge screenshot: post with 112K views">
+                <img src="post-112k.jpg" width="1000" height="227" loading="lazy"
+                     alt="Instagram post metrics: 112K views, 2,503 likes, 29 comments, 38 reposts, 838 shares" />
+              </button>
             </article>
 
             <article class="post">
-              <div class="big">72.1K<small>Views</small></div>
-              <ul>
-                <li>2,170 <span>likes</span></li>
-                <li>25 <span>comments</span></li>
-                <li>54 <span>reposts</span></li>
-                <li>173 <span>shares</span></li>
-              </ul>
-              <div class="total"><strong>2,422</strong><span>Interactions</span></div>
+              <div class="post__info">
+                <div class="big">72.1K<small>Views</small></div>
+                <ul>
+                  <li>2,170 <span>likes</span></li>
+                  <li>25 <span>comments</span></li>
+                  <li>54 <span>reposts</span></li>
+                  <li>173 <span>shares</span></li>
+                </ul>
+                <div class="total"><strong>2,422</strong> interactions</div>
+              </div>
+              <button type="button" class="shot__btn post__shot" data-full="post-72k.jpg" aria-label="Enlarge screenshot: post with 72.1K views">
+                <img src="post-72k.jpg" width="1000" height="220" loading="lazy"
+                     alt="Instagram post metrics: 72.1K views, 2,170 likes, 25 comments, 54 reposts, 173 shares" />
+              </button>
             </article>
 
             <article class="post">
-              <div class="big">5,528<small>Likes</small></div>
-              <ul>
-                <li>8 <span>comments</span></li>
-                <li>160 <span>reposts</span></li>
-                <li>333 <span>shares</span></li>
-              </ul>
-              <div class="total"><strong>6,029</strong><span>Interactions</span></div>
+              <div class="post__info">
+                <div class="big">5,528<small>Likes</small></div>
+                <ul>
+                  <li>8 <span>comments</span></li>
+                  <li>160 <span>reposts</span></li>
+                  <li>333 <span>shares</span></li>
+                </ul>
+                <div class="total"><strong>6,029</strong> interactions</div>
+              </div>
+              <button type="button" class="shot__btn post__shot" data-full="post-5528.jpg" aria-label="Enlarge screenshot: post with 5,528 likes">
+                <img src="post-5528.jpg" width="1000" height="117" loading="lazy"
+                     alt="Instagram post metrics: 5,528 likes, 8 comments, 160 reposts, 333 shares" />
+              </button>
             </article>
           </div>
         </section>
@@ -505,6 +543,11 @@
       </section>
     </section>
   </main>
+
+  <dialog id="lightbox" class="lightbox" aria-label="Enlarged screenshot">
+    <button type="button" class="lightbox__close" aria-label="Close">&times;</button>
+    <img id="lightbox-img" alt="" />
+  </dialog>
 
   <script src="./script.js"></script>
 </body>
