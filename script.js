@@ -1,13 +1,3 @@
-/* ------------------------------------------------------------------
-   VIDEOS: add your YouTube links here. Normal, short and Shorts links
-   all work. While the list is empty, the Videos section stays hidden.
-   Example:
-   { title: "Campaign name", url: "https://www.youtube.com/watch?v=XXXXXXXXXXX", vertical: true }
-   ------------------------------------------------------------------ */
-var VIDEOS = [];
-
-/* ------------------------------------------------------------------ */
-
 document.getElementById('y').textContent = new Date().getFullYear();
 
 // If the photo is missing, the rose gradient behind it shows instead.
@@ -49,48 +39,38 @@ note.textContent = 'Opens your email app to send the message.';
 form.appendChild(note);
 
 // Back to top
+const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 document.querySelector('.to-top').addEventListener('click', event => {
   event.preventDefault();
-  window.scrollTo({ top: 0, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
+  window.scrollTo({ top: 0, behavior: reduceMotion ? 'instant' : 'smooth' });
 });
 
-// Videos
-function youtubeId(url) {
-  const m = String(url).match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?(?:.*&)?v=|embed\/|shorts\/|live\/))([A-Za-z0-9_-]{11})/);
-  if (m) return m[1];
-  return /^[A-Za-z0-9_-]{11}$/.test(url) ? url : null;
-}
-const videoList = document.getElementById('video-list');
-let added = 0;
-VIDEOS.forEach(v => {
-  const id = youtubeId(v.url);
-  if (!id) return;
-  const fig = document.createElement('figure');
-  fig.className = 'video' + (v.vertical ? ' vertical' : '');
-  const frame = document.createElement('div');
-  frame.className = 'frame';
-  const iframe = document.createElement('iframe');
-  iframe.src = 'https://www.youtube-nocookie.com/embed/' + id;
-  iframe.title = v.title || 'Video';
-  iframe.loading = 'lazy';
-  iframe.allow = 'accelerometer; encrypted-media; gyroscope; picture-in-picture';
-  iframe.allowFullscreen = true;
-  frame.appendChild(iframe);
-  fig.appendChild(frame);
-  if (v.title) {
-    const cap = document.createElement('figcaption');
-    cap.textContent = v.title;
-    fig.appendChild(cap);
-  }
-  videoList.appendChild(fig);
-  added++;
+// Video gallery: only one video plays at a time; the arrows scroll the row.
+const phones = document.getElementById('video-list');
+const clips = [...phones.querySelectorAll('video')];
+clips.forEach(clip => {
+  clip.addEventListener('play', () => {
+    clips.forEach(other => { if (other !== clip) other.pause(); });
+  });
 });
-if (added) {
-  document.getElementById('videos').hidden = false;
-  document.getElementById('nav-videos').hidden = false;
-  sections.push(document.getElementById('videos'));
-  observer.observe(document.getElementById('videos'));
+document.querySelectorAll('.phones__nav').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const gap = parseFloat(getComputedStyle(phones).columnGap) || 22;
+    const step = phones.querySelector('.phone').offsetWidth + gap;
+    phones.scrollBy({ left: Number(btn.dataset.dir) * step * 2, behavior: reduceMotion ? 'auto' : 'smooth' });
+  });
+});
+
+// Hide an arrow when there is nothing more to scroll to in that direction.
+const prevBtn = document.querySelector('.phones__nav--prev');
+const nextBtn = document.querySelector('.phones__nav--next');
+function updateNav() {
+  prevBtn.hidden = phones.scrollLeft < 8;
+  nextBtn.hidden = phones.scrollLeft + phones.clientWidth >= phones.scrollWidth - 8;
 }
+phones.addEventListener('scroll', updateNav, { passive: true });
+window.addEventListener('resize', updateNav);
+updateNav();
 
 // Screenshot viewer: click a screenshot to enlarge it, click again or press Esc to close.
 const lightbox = document.getElementById('lightbox');

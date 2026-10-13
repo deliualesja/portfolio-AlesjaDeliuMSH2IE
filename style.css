@@ -467,13 +467,70 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   box-shadow: 0 6px 20px rgba(0,0,0,.25);
 }
 
-/* Videos */
-.videos { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)); gap: 24px; }
-.video { margin: 0; min-width: 0; }
-.video .frame { position: relative; width: 100%; aspect-ratio: 16 / 9; border-radius: 18px; overflow: hidden; background: var(--soft); }
-.video.vertical .frame { aspect-ratio: 9 / 16; }
-.video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
-.video figcaption { margin-top: 10px; font-size: .92rem; }
+/* Videos: phones in a sideways row */
+.phones-wrap { position: relative; }
+.phones {
+  display: flex;
+  gap: 22px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 6px 4px 18px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent) transparent;
+}
+.phone { flex: none; width: 220px; margin: 0; scroll-snap-align: start; }
+.phone__body {
+  position: relative;
+  padding: 8px;
+  border-radius: 34px;
+  background: #2b2026;
+  box-shadow: 0 16px 40px #654a5a38, inset 0 0 0 2px #4b3b44;
+}
+.phone__body::before {
+  content: "";
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  z-index: 2;
+  width: 58px;
+  height: 15px;
+  border-radius: 10px;
+  background: #2b2026;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+.phone__video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  object-fit: cover;
+  border-radius: 26px;
+  background: #000;
+}
+.phone figcaption { margin-top: 12px; text-align: center; font-size: .92rem; font-weight: 600; }
+
+.phones__nav {
+  position: absolute;
+  top: 42%;
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  padding: 0 0 3px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--paper);
+  color: var(--accent-deep);
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 6px 20px #654a5a30;
+}
+.phones__nav:hover { background: var(--soft); }
+.phones__nav--prev { left: -14px; }
+.phones__nav--next { right: -14px; }
+@media (hover: none) { .phones__nav { display: none; } }
 
 /* Projects */
 .proj { display: flex; flex-direction: column; gap: 16px; padding: 24px; min-width: 0; }

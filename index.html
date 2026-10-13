@@ -43,7 +43,7 @@
             </svg>
           </a>
 
-          <a class="rail__link" href="#videos" id="nav-videos" title="Videos" aria-label="Videos" hidden>
+          <a class="rail__link" href="#videos" id="nav-videos" title="Videos" aria-label="Videos">
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path d="M4 5h11a2 2 0 0 1 2 2v2.5l5-3v11l-5-3V17a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z"/>
             </svg>
@@ -284,13 +284,67 @@
           </div>
         </section>
 
-        <!-- VIDEOS: stays hidden until you add YouTube links in script.js -->
-        <section id="videos" class="section" hidden>
+        <!-- VIDEOS -->
+        <section id="videos" class="section" aria-labelledby="videos-h">
           <div class="section__head">
-            <h2>Videos</h2>
-            <p class="muted">Selected content.</p>
+            <h2 id="videos-h">Videos</h2>
+            <p class="muted">Selected content. Press play on a phone, or scroll sideways for more.</p>
           </div>
-          <div class="videos" id="video-list"></div>
+
+          <div class="phones-wrap">
+            <button type="button" class="phones__nav phones__nav--prev" data-dir="-1" aria-label="Previous videos">&#8249;</button>
+            <div class="phones" id="video-list" tabindex="0" role="group" aria-label="Video gallery">
+          <figure class="phone">
+            <div class="phone__body">
+              <video class="phone__video" src="videos/elisa-pako.mp4" poster="videos/elisa-pako.jpg" preload="none" playsinline controls aria-label="Video: Elisa Pako"></video>
+            </div>
+            <figcaption>Elisa Pako</figcaption>
+          </figure>
+          <figure class="phone">
+            <div class="phone__body">
+              <video class="phone__video" src="videos/erilda.mp4" poster="videos/erilda.jpg" preload="none" playsinline controls aria-label="Video: Erilda"></video>
+            </div>
+            <figcaption>Erilda</figcaption>
+          </figure>
+          <figure class="phone">
+            <div class="phone__body">
+              <video class="phone__video" src="videos/ina-netflix-trend.mp4" poster="videos/ina-netflix-trend.jpg" preload="none" playsinline controls aria-label="Video: Ina – Netflix trend"></video>
+            </div>
+            <figcaption>Ina – Netflix trend</figcaption>
+          </figure>
+          <figure class="phone">
+            <div class="phone__body">
+              <video class="phone__video" src="videos/free-wifi.mp4" poster="videos/free-wifi.jpg" preload="none" playsinline controls aria-label="Video: Free WiFi"></video>
+            </div>
+            <figcaption>Free WiFi</figcaption>
+          </figure>
+          <figure class="phone">
+            <div class="phone__body">
+              <video class="phone__video" src="videos/uendi-neli-2.mp4" poster="videos/uendi-neli-2.jpg" preload="none" playsinline controls aria-label="Video: Uendi &amp; Neli 2"></video>
+            </div>
+            <figcaption>Uendi &amp; Neli 2</figcaption>
+          </figure>
+          <figure class="phone">
+            <div class="phone__body">
+              <video class="phone__video" src="videos/new-options.mp4" poster="videos/new-options.jpg" preload="none" playsinline controls aria-label="Video: New options"></video>
+            </div>
+            <figcaption>New options</figcaption>
+          </figure>
+          <figure class="phone">
+            <div class="phone__body">
+              <video class="phone__video" src="videos/uendi-neli-3.mp4" poster="videos/uendi-neli-3.jpg" preload="none" playsinline controls aria-label="Video: Uendi &amp; Neli 3"></video>
+            </div>
+            <figcaption>Uendi &amp; Neli 3</figcaption>
+          </figure>
+          <figure class="phone">
+            <div class="phone__body">
+              <video class="phone__video" src="videos/venera-pay-by-card.mp4" poster="videos/venera-pay-by-card.jpg" preload="none" playsinline controls aria-label="Video: Venera – Pay by card"></video>
+            </div>
+            <figcaption>Venera – Pay by card</figcaption>
+          </figure>
+            </div>
+            <button type="button" class="phones__nav phones__nav--next" data-dir="1" aria-label="Next videos">&#8250;</button>
+          </div>
         </section>
 
         <!-- SKILLS -->
